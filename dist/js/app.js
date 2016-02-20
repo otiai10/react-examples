@@ -19710,7 +19710,7 @@
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'h1',
-	        { style: this.stupid() },
+	        { style: this.stupidStyle() },
 	        this.state.count
 	      );
 	    }
@@ -19720,10 +19720,15 @@
 	      this.setState({ count: this.state.count + 1 });
 	    }
 	  }, {
-	    key: 'stupid',
-	    value: function stupid() {
+	    key: 'stupidStyle',
+	    value: function stupidStyle() {
 	      // 3がつく数字のときはとくべつなstyleを返す
-	      if (String(this.state.count).match('3')) return { color: 'red', fontFamily: 'fantasy' };else return {};
+	      if (this.isStupid()) return { color: 'red', fontFamily: 'fantasy' };else return {};
+	    }
+	  }, {
+	    key: 'isStupid',
+	    value: function isStupid() {
+	      return String(this.state.count).match('3') || this.state.count != 0 && this.state.count % 3 == 0;
 	    }
 	  }]);
 
