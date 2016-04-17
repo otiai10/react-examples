@@ -7,7 +7,7 @@ class Game extends Component {
   render() {
     return <div className='column is-8'>
       <div className='columns'>
-        <Display />
+        <Display position={this.props.position} />
       </div>
       <div className='columns'>
         <Controller />

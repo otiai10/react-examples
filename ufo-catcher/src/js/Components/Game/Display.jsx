@@ -6,11 +6,11 @@ class UFO extends Component {
       width: '80px',
       height: '80px',
       backgroundColor: 'red',
-      position: 'absolute'
+      position: 'absolute',
+      top: this.props.position.top + 'px',
+      left: this.props.position.left + 'px'
     }
-    return <div style={style}>
-
-    </div>
+    return <div style={style}></div>
   }
 }
 
@@ -22,7 +22,7 @@ class Display extends Component {
       position: 'relative'
     }
     return <div className='column' style={style}>
-      <UFO />
+      <UFO position={this.props.position} />
     </div>
   }
 }
