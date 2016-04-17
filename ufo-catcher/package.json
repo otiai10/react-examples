@@ -1,0 +1,41 @@
+{
+  "name": "ufo-catcher",
+  "version": "1.0.0",
+  "description": "Fluxのやつ",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "bulma": "*",
+    "font-awesome": "*",
+    "react": "*",
+    "react-dom": "*",
+    "redux": "*",
+    "react-redux": "*"
+  },
+  "devDependencies": {
+    "babel": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-react": "*",
+    "babel-preset-es2015": "*",
+    "style-loader": "*",
+    "css-loader": "*",
+    "font-awesome-webpack": "*",
+    "url-loader": "*",
+    "file-loader": "*",
+    "less": "*",
+    "webpack": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/otiai10/react-examples"
+  },
+  "keywords": [
+    "flux"
+  ],
+  "author": "otiai10",
+  "license": "MIT"
+}
