@@ -73,19 +73,21 @@
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? { position: { top: 0, left: 0 } } : arguments[0];
 	  var action = arguments[1];
 
-	  console.log("[debug:000]", state, action);
 	  switch (action.type) {
 	    case 'MOVE':
+	      var step = 15;
+	      var position = Object.assign({}, state.position);
 	      switch (action.direction) {
 	        case 'UP':
-	          return {
-	            position: {
-	              top: state.position.top + 1
-	            }
-	          };
-	          break;
+	          position.top = state.position.top - step;break;
+	        case 'DOWN':
+	          position.top = state.position.top + step;break;
+	        case 'LEFT':
+	          position.left = state.position.left - step;break;
+	        case 'RIGHT':
+	          position.left = state.position.left + step;break;
 	      }
-	      return state;
+	      return { position: position };
 	    default:
 	      return state;
 	  }
@@ -20887,7 +20889,7 @@
 	}(_react.Component);
 
 	App = (0, _reactRedux.connect)(function (state) {
-	  console.log("[debug:001]", "dispatchしたけっかここに来て欲しいんだけどなー");
+	  console.log(state);
 	  return {
 	    position: { top: state.position.top, left: state.position.left }
 	  };
@@ -21175,7 +21177,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'button', onClick: function onClick() {
-	                  return _this2.onClick('left');
+	                  return _this2.onClick('LEFT');
 	                } },
 	              'ひだり'
 	            )
@@ -21186,7 +21188,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'button', onClick: function onClick() {
-	                  return _this2.onClick('right');
+	                  return _this2.onClick('RIGHT');
 	                } },
 	              'みぎ'
 	            )
@@ -21201,7 +21203,7 @@
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'button', onClick: function onClick() {
-	                  return _this2.onClick('down');
+	                  return _this2.onClick('DOWN');
 	                } },
 	              'した'
 	            )

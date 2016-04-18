@@ -14,13 +14,13 @@ class Controller extends Component {
       </div>
 
       <div className="columns is-mobile">
-        <div className="column is-half"><button className="button" onClick={() => this.onClick('left')}>ひだり</button></div>
-        <div className="column is-half"><button className="button" onClick={() => this.onClick('right')}>みぎ</button></div>
+        <div className="column is-half"><button className="button" onClick={() => this.onClick('LEFT')}>ひだり</button></div>
+        <div className="column is-half"><button className="button" onClick={() => this.onClick('RIGHT')}>みぎ</button></div>
       </div>
 
       <div className="columns is-mobile">
         <div className="column is-half is-offset-one-quarter">
-          <button className="button" onClick={() => this.onClick('down')}>した</button>
+          <button className="button" onClick={() => this.onClick('DOWN')}>した</button>
         </div>
       </div>
 

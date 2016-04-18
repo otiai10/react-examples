@@ -12,9 +12,15 @@ import { createStore } from 'redux'
 let store = createStore((state = {position:{top: 0, left: 0}}, action) => {
   switch (action.type) {
     case 'MOVE':
+      const step = 15;
+      let position = Object.assign({}, state.position);
       switch (action.direction) {
-        case 'UP': return {position:{top:state.position.top + 1}}
+        case 'UP':    position.top =  state.position.top  - step; break;
+        case 'DOWN':  position.top =  state.position.top  + step; break;
+        case 'LEFT':  position.left = state.position.left - step; break;
+        case 'RIGHT': position.left = state.position.left + step; break;
       }
+      return {position}
     default:
       return state;
   }

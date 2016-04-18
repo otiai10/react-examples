@@ -21,7 +21,6 @@ class App extends Component {
 }
 
 App = connect((state) => {
-  console.log("[debug:001]", "dispatchしたけっかここに来て欲しいんだけどなー");
   return {
     position: {top: state.position.top, left: state.position.left}
   }
