@@ -6,7 +6,7 @@ class Header extends Component {
       <div className='container'>
         <div className='columns'>
           <div className='column'>
-            <h1 className='title header-item is-1'>UFOキャッチャー的なやつ</h1>
+            <h1 className='title header-item is-1'>React Redux Example</h1>
           </div>
         </div>
       </div>

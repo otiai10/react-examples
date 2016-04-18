@@ -20889,7 +20889,6 @@
 	}(_react.Component);
 
 	App = (0, _reactRedux.connect)(function (state) {
-	  console.log(state);
 	  return {
 	    position: { top: state.position.top, left: state.position.left }
 	  };
@@ -20948,7 +20947,7 @@
 	              _react2.default.createElement(
 	                'h1',
 	                { className: 'title header-item is-1' },
-	                'UFOキャッチャー的なやつ'
+	                'React Redux Example'
 	              )
 	            )
 	          )
