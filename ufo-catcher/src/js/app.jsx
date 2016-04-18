@@ -9,7 +9,9 @@ import App from './Components/App'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
-let store = createStore((state = {position:{top: 0, left: 0}}, action) => {
+let store = createStore((state = {position:{top: 0, left: 0}, logs: []}, action) => {
+  let logs = state.logs
+  logs.unshift(action)
   switch (action.type) {
     case 'MOVE':
       const step = 15;
@@ -20,7 +22,7 @@ let store = createStore((state = {position:{top: 0, left: 0}}, action) => {
         case 'LEFT':  position.left = state.position.left - step; break;
         case 'RIGHT': position.left = state.position.left + step; break;
       }
-      return {position}
+      return {position, logs}
     default:
       return state;
   }

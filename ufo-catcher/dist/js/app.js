@@ -70,9 +70,11 @@
 
 
 	var store = (0, _redux.createStore)(function () {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? { position: { top: 0, left: 0 } } : arguments[0];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? { position: { top: 0, left: 0 }, logs: [] } : arguments[0];
 	  var action = arguments[1];
 
+	  var logs = state.logs;
+	  logs.unshift(action);
 	  switch (action.type) {
 	    case 'MOVE':
 	      var step = 15;
@@ -87,7 +89,7 @@
 	        case 'RIGHT':
 	          position.left = state.position.left + step;break;
 	      }
-	      return { position: position };
+	      return { position: position, logs: logs };
 	    default:
 	      return state;
 	  }
@@ -20841,7 +20843,11 @@
 
 	var _Game2 = _interopRequireDefault(_Game);
 
-	var _Footer = __webpack_require__(219);
+	var _Logs = __webpack_require__(219);
+
+	var _Logs2 = _interopRequireDefault(_Logs);
+
+	var _Footer = __webpack_require__(220);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -20877,7 +20883,8 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'columns' },
-	            _react2.default.createElement(_Game2.default, { position: this.props.position })
+	            _react2.default.createElement(_Game2.default, { position: this.props.position }),
+	            _react2.default.createElement(_Logs2.default, { logs: this.props.logs })
 	          )
 	        ),
 	        _react2.default.createElement(_Footer2.default, null)
@@ -20890,7 +20897,8 @@
 
 	App = (0, _reactRedux.connect)(function (state) {
 	  return {
-	    position: { top: state.position.top, left: state.position.left }
+	    position: { top: state.position.top, left: state.position.left },
+	    logs: state.logs
 	  };
 	})(App);
 
@@ -21007,7 +21015,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'column is-8' },
+	        { className: 'column is-6 is-offset-1' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'columns' },
@@ -22733,6 +22741,70 @@
 
 /***/ },
 /* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(14);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Logs = function (_Component) {
+	  _inherits(Logs, _Component);
+
+	  function Logs() {
+	    _classCallCheck(this, Logs);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Logs).apply(this, arguments));
+	  }
+
+	  _createClass(Logs, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "column" },
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Action Logs"
+	        ),
+	        _react2.default.createElement(
+	          "code",
+	          null,
+	          this.props.logs.map(function (log, i) {
+	            return _react2.default.createElement(
+	              "p",
+	              { key: i },
+	              JSON.stringify(log)
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Logs;
+	}(_react.Component);
+
+	exports.default = Logs;
+
+/***/ },
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

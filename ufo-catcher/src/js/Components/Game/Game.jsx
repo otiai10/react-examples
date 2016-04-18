@@ -5,7 +5,7 @@ import Controller from './Controller'
 
 class Game extends Component {
   render() {
-    return <div className='column is-8'>
+    return <div className='column is-6 is-offset-1'>
       <div className='columns'>
         <Display position={this.props.position} />
       </div>
