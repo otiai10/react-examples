@@ -10,14 +10,11 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 let store = createStore((state = {position:{top: 0, left: 0}}, action) => {
-  console.log("[debug:000]", state, action)
   switch (action.type) {
     case 'MOVE':
       switch (action.direction) {
-        case 'UP': state.position.top++;
-          break;
+        case 'UP': return {position:{top:state.position.top + 1}}
       }
-      return state;
     default:
       return state;
   }
