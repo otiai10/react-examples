@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class UFO extends Component {
   render() {
@@ -26,5 +27,9 @@ class Display extends Component {
     </div>
   }
 }
+
+Display = connect((state) => {
+  return { position: state.position }
+})(Display)
 
 export default Display

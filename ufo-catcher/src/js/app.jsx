@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 let store = createStore((state = {position:{top: 0, left: 0}, logs: []}, action) => {
-  let logs = state.logs
+  let logs = state.logs.slice(0)
   logs.unshift(action)
   switch (action.type) {
     case 'MOVE':

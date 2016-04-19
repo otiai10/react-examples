@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Logs extends Component {
   render() {
@@ -12,5 +13,9 @@ class Logs extends Component {
     </div>;
   }
 }
+
+Logs = connect((state) => {
+  return { logs: state.logs }
+})(Logs)
 
 export default Logs
